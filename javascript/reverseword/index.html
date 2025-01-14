@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse word</title>
+</head>
+<body>
+    <label>Enter sentence</label>
+    <input type="text" id="sentence">
+    <button type="submit" id="submitBtn">Submit</button>
+    <div id="result"></div>
+    <script>
+       function reverseLetters(sentence) {
+    let reversedSentence = "";
+    let word = "";
+    
+    for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i] === " ") {
+            for (let j = word.length - 1; j >= 0; j--) {
+                reversedSentence += word[j];
+            }
+            reversedSentence += " "; 
+            word = "";
+        } else {
+            word += sentence[i]; 
+        }
+    }
+
+    for (let j = word.length - 1; j >= 0; j--) {
+        reversedSentence += word[j];
+    }
+
+    return reversedSentence;
+}
+document.getElementById("submitBtn").onclick = function() {
+        const inputSentence = document.getElementById("sentence").value; 
+        if (inputSentence.trim() !== "") {
+            const result = reverseLetters(inputSentence); 
+            document.getElementById('result').innerHTML = result; 
+        } else {
+            document.getElementById('result').innerHTML = "Please enter a valid sentence."; 
+    };
+}
+    </script>
+</body>
+</html>
